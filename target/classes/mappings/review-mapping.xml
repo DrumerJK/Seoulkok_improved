@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ReviewDAO">
+
+	<insert id="insertReview">
+	<![CDATA[
+		insert into reviewboard(seq, title, content, fileName, writer, love, target, visitedDate, companion, recommendationTime) 
+		values((select nvl(max(seq), 0)+1 from reviewboard),
+		#{title}, 
+		#{content},
+		#{fileName}, 
+		#{writer},
+		#{love},
+		#{target},
+		#{visitedDate},
+		#{companion},
+		#{recommendationTime}
+		)
+	]]>
+	</insert>
+	
+	<select id="getReviewList_T" resultType="review">
+	<![CDATA[
+		select * from reviewboard where title like '%'||#{searchKeyword}||'%'
+		order by seq desc
+	]]>
+	</select>
+	
+	<select id="getReviewList_C" resultType="review">
+	<![CDATA[
+		select * from reviewboard where content like '%'||#{searchKeyword}||'%' 
+		order by seq desc
+	]]>
+	</select>
+	
+	<select id="getUserReviewList" resultType="review">
+	<![CDATA[
+		select * from reviewboard where writer=#{loginId} order by seq desc
+	]]>
+	</select>
+	
+	<select id="getReviewDetail" resultType="review">
+	<![CDATA[
+		select * from reviewboard where seq=#{seq}
+	]]>
+	</select>
+	
+	<update id="countUp">
+	<![CDATA[
+		update reviewboard set 
+		cnt = cnt+1
+		where seq=#{seq}
+	]]>		
+	</update>
+	
+	<update id="updateReview">
+	<![CDATA[
+		update reviewboard set 
+		title=#{title}, 
+		content=#{content}, 
+		love=#{love}, 
+		target=#{target},
+		visitedDate=#{visitedDate},
+		companion=#{companion}, 
+		recommendationTime=#{recommendationTime},
+		fileName=#{fileName},
+		cnt = cnt
+		where seq=#{seq}
+	]]>		
+	</update>
+	
+	<delete id="deleteReview">
+	<![CDATA[
+		delete from reviewboard where seq=#{seq} 
+	]]>
+	</delete>
+	
+</mapper>

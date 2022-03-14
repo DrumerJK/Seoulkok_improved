@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	
+	
+	<!-- Alias 설정 -->
+ 	<typeAliases>
+		<typeAlias alias="notice" type="com.springcompany.biz.admin.dao.NoticeVO"/>
+		<typeAlias alias="user" type="com.springcompany.biz.user.dao.userVO"/>
+		<typeAlias alias="qnaboard" type="com.springcompany.biz.admin.dao.QnaVO"/>
+		<typeAlias alias="review" type="com.springcompany.biz.review.dao.ReviewVO"/>
+	</typeAliases>
+	
+
+  	<!-- Sql Mapper 설정 -->
+	<mappers>
+		<mapper resource="mappings/notice-mapping.xml" />
+		<mapper resource="mappings/login-mapping.xml"/>
+		<mapper resource="mappings/qna-mapping.xml" />
+		<mapper resource="mappings/review-mapping.xml"/>
+	</mappers>
+	
+	
+	
+  
+</configuration>
