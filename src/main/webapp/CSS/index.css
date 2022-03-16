@@ -1,0 +1,56 @@
+
+/* Only for index.jsp BEGIN */
+
+body {
+	background-image: url(http://tong.visitkorea.or.kr//cms2//website//20//2504320.jpg);
+	background-size: 100%;
+}
+
+#box {
+	position: fixed;
+	left: 0;
+	top: 33%;
+	width: 100%;
+	height: 30%;
+	background: rgb(100, 100, 100);
+	opacity: 0;
+}
+
+#text {
+	position: fixed;
+	left: 0;
+	top: 40%;
+	width: 100%;
+	height: 30%;
+	color: white;
+	font-family: 'Hanna', sans-serif;
+	text-align: center;
+}
+
+#your {
+	text-align: right;
+	opacity: 0;
+}
+
+#seoul {
+	text-align: center;
+	opacity: 0;
+}
+
+#joyful {
+	text-align: left;
+	opacity: 0;
+}
+
+#seoulKok {
+	width: 100%;
+	text-align: center;
+	font-size: 1.2em;
+	opacity: 0;
+}
+
+#imgCopyright {
+	text-align: right;
+}
+
+/* Only for index.jsp END */

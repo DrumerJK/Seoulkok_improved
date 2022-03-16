@@ -1,0 +1,32 @@
+/* Header & Footer BEGIN */
+
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
+a {
+	text-decoration: none;
+}
+
+.title {
+	font-family: 'Hanna', sans-serif;
+	font-size: 2em;
+}
+
+#titleFont1{
+	color: rgb(100, 100, 100);
+}
+
+#titleFont2{
+	color: rgb(0, 121, 188);
+}
+
+.nav-link {
+	font-family: 'Hanna', sans-serif;
+	font-size: 1.2em;
+}
+
+.memberMenu {
+	font-family: 'Hanna', sans-serif;
+	color: rgb(100, 100, 100);
+}
+
+/* Header & Footer END */
