@@ -4,6 +4,11 @@
 
 a {
 	text-decoration: none;
+	color: rgb(100, 100, 100);
+}
+
+a:hover {
+	color: black;
 }
 
 .title {
@@ -27,6 +32,10 @@ a {
 .memberMenu {
 	font-family: 'Hanna', sans-serif;
 	color: rgb(100, 100, 100);
+}
+
+.text-muted {
+	font-size: 0.8em;
 }
 
 /* Header & Footer END */
