@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'SuncheonR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#tourInfo {
+	font-family: 'SuncheonR', sans-serif;
+}
+
+#mapOverray {
+	background-color: #FEE500;
+	border-radius: 12px;
+	color: #000000;
+	padding: 7px;
+}

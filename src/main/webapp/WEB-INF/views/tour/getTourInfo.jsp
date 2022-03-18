@@ -1,272 +1,178 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.springcompany.prz.tour.controller.Keys"%>
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>서울 콕: 당신의 서울을 즐겁게</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/">
+
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>서울 콕: 당신의 서울을 즐겁게</title>
 
-<style type="text/css">
+    <!-- Bootstrap core CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-	/* 헤더 영역 CSS */
-	@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
-	@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-	@font-face {
-	    font-family: 'BMDOHYEON';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-	}
-	
-	header{
-		width: 100%;
-		height: 85px;
-		position: fixed;
-		top: 0;
-		left: 0;
-		background-color: white;
-		border-bottom: 1px solid rgb(230, 230, 230); 
-	}
-	
-	a{
-		text-decoration: none;
-	}
-	
-	#memberMenu{
-		width: 100%;
-		text-align: right;
-		background: rgb(230, 230, 230); 
-		font-size: small;
-	}
-	
-	.memberMenu{
-		color: rgb(100, 100, 100);		
-	}
-	
-	.memberMenu:hover{
-		text-decoration: underline;
-	}
-	
-	#logo{
-		font-family: 'Hanna', sans-serif;
-		font-size: 3.5em;
-		margin: 20px;
-	}
-	
-	#logoFont1{
-		color: rgb(100, 100, 100);
-	}
-	
-	#logoFont2{
-		color: rgb(0, 121, 188);
-	}
-	
-	#mainMenu{
-		float: right;
-		margin-top: 22px;
-		padding-right: 20px;
-		font-family: 'Hanna', sans-serif;
-		font-size: 2em;
-	}
-	
-	.mainMenu{
-		color: rgb(100, 100, 100);
-		transition-duration: 0.3s;
-	}
-	
-	.mainMenu:hover{
-		color: rgb(0, 121, 188);
-		font-size: 1.2em;
-		transition-duration: 0.3s;
-	}
-	
-	/* 헤더영역 CSS 끝 */
-	
- 	body{
-		font-family: 'Nanum Gothic', sans-serif;
-	}  /* 한자를 지원하지 않아 개요정보에 뜨지 않는 경우 있음. 한문 지원 폰트 필요 */
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
 
-	#titleSpace{
-		height:85px;
-	}
 
-	#pageTitle{
-		height: 200px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: large;
-		font-family: 'BMDOHYEON', sans-serif;
-	}
-	
-	#tourInfo{
-		width:1000px;
-		margin-top: 20px;
-		margin-bottom: 20px;
-	}
-	
-	img{
-		width: 1000px;
-	}
-	.infoSubject{
-		width: 150px;
-		font-size: 1.2em;
-		
-	}
-	
-	.infoDetail {
-		padding-top: 20px;
-		padding-bottom: 20px;
-		border-bottom: 1px solid rgb(200, 200, 200);
-		font-size: 1.2em;
-		text-align: justify;
-	}
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-	#tourDetailInfo{
-		width: 1000px;
-		margin-top: 20px;
-		margin-bottom: 20px;
-	}
-	
-	#toTop{
-		width:50px;
-	 	height:50px;
-	 	background: rgb(0, 121, 188);
-	 	border-radius: 10px;
-	 	line-height:50px;
-	 	text-decoration:none;
-	 	text-align: center;
-	 	color: white;	 	
-	 	position: fixed;
-	 	bottom:20px;
-	 	right:20px;
-	}
-	
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      
+      
+      
+    </style>
 
-	
-</style>
-
-	<script src="./jQuery/jquery-3.6.0.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%=Keys.APP_KEY%>">
-	</script>	
+    
+    <!-- Custom styles for this template -->
+    <link href="CSS/getTourInfo.css" rel="stylesheet">
+    <link href="CSS/header_footer.css" rel="stylesheet">
+    
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%=Keys.APP_KEY%>"></script>
 	<script type="text/javascript">
-		
-		$(function(){
-			$.getJSON('http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?'+
-					'ServiceKey=<%=Keys.SERVICE_KEY%>'+
-					'&contentId='+${param.contentId}+
-					'&defaultYN=Y'+
-					'&firstImageYN=Y'+
-					'&addrinfoYN=Y'+
-					'&overviewYN=Y'+
-					'&mapinfoYN=Y'+
-					'&MobileOS=ETC&MobileApp=AppTest&_type=json', function(data){
-						
-				$('#pageTitle').append(
-						
-						'<h1>'+data.response.body.items.item.title+'</h1>'
-						
-						);
-			
-				$('#tourInfo').append(
-							
-						'<tr>'+
-							'<td id="infoImage" align="center" colspan="2"><img src=\''+data.response.body.items.item.firstimage+'\' /></td>'+
-						'</tr>'+		
-						'<tr>'+
-							'<td class="infoSubject" align="left"><b>주소</b></td>'+
-							'<td class="infoDetail" align="left">'+data.response.body.items.item.addr1+'</td>'+
-						'</tr>'+
-						'<tr>'+
-							'<td class="infoSubject" align="left"><b>홈페이지</b></td>'+
-							'<td class="infoDetail" align="left">'+data.response.body.items.item.homepage+'</td>'+
-						'</tr>'+
-						'<tr>'+
-							'<td class="infoSubject" align="left"><b>개요</b></td>'+
-							'<td class="infoDetail" align="left"><p>'+data.response.body.items.item.overview+'</p></td>'+
-						'</tr>'+	
-						'<tr>'+
-							
-							'<td colspan="2" align="left">'+
-								'<div id="map" style="width:1000px; height:600px;"></div>'+
-							'</td>'+
-						'</tr>'
-						
-						);
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = { 
-			        center: new kakao.maps.LatLng(data.response.body.items.item.mapy, data.response.body.items.item.mapx), // 지도의 중심좌표
-			        level: 4 // 지도의 기본 확대 레벨 *(Json에서 가져오는 값이 6으로 고정값이기 때문에 '4'로 입력 1~14까지 입력가능 or 'data.response.body.items.item.mlevel' 로 입력가능 
-			    };
-			
-				var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
-				
-				var mapTypeControl = new kakao.maps.MapTypeControl();
-	
-				// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의, TOPRIGHT는 오른쪽 위를 의미
-				map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-	
-				// 줌 컨트롤
-				var zoomControl = new kakao.maps.ZoomControl();
-				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-				
-				var markerPosition  = new kakao.maps.LatLng(data.response.body.items.item.mapy, data.response.body.items.item.mapx); 
 
-	            // 마커 생성
-	            var marker = new kakao.maps.Marker({
-	                position: markerPosition
-	            });
-
-	            // 마커 지도 위에 표시
-	            marker.setMap(map);
-				
-			});
-		});
-		
-		$(function(){
-			$.getJSON('http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?'+
-					'ServiceKey=<%=Keys.SERVICE_KEY%>'+
-					'&contentId='+${param.contentId}+
-					'&contentTypeId=12'+
-					'&MobileOS=ETC&MobileApp=AppTest&_type=json', function(data){
-			
-				$('#tourDetailInfo').append(
-					'<tr>'+
-						'<td class="infoSubject" align="left"><b>반려동물<br>동반가능 여부</b></td>'+
-						'<td class="infoDetail" align="left">'+data.response.body.items.item.chkpet+'</td>'+
-					'</tr>'+
-					'<tr>'+
-						'<td class="infoSubject" align="left"><b>주차</b></td>'+
-						'<td class="infoDetail" align="left">'+data.response.body.items.item.parking+'</td>'+
-					'</tr>'+
-					'<tr>'+
-						'<td class="infoSubject" align="left"><b>휴무일</b></td>'+
-						'<td class="infoDetail" align="left">'+data.response.body.items.item.restdate+'</td>'+
-					'</tr>'+
-					'<tr>'+
-						'<td class="infoSubject" align="left"><b>이용시간</b></td>'+
-						'<td class="infoDetail" align="left">'+data.response.body.items.item.usetime+'</td>'+
-					'</tr>'+
-					'<tr>'+
-						'<td class="infoSubject" align="left"><b>문의</b></td>'+
-						'<td class="infoDetail" align="left">'+data.response.body.items.item.infocenter+'</td>'+
-					'</tr>'
+	$(function(){
+		$.getJSON('http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?'+
+				'ServiceKey=<%=Keys.SERVICE_KEY%>'+
+				'&contentId='+${param.contentId}+
+				'&defaultYN=Y'+
+				'&firstImageYN=Y'+
+				'&addrinfoYN=Y'+
+				'&overviewYN=Y'+
+				'&mapinfoYN=Y'+
+				'&MobileOS=ETC&MobileApp=AppTest&_type=json', function(data){
 					
-						);
-				
-			});
+			$('#img').append('<img width="100%" src="'+data.response.body.items.item.firstimage+'" />');
+			$('#title').append('<h1><b>'+data.response.body.items.item.title+'</b></h1>');
+			$('#address').append(''+data.response.body.items.item.addr1+'');
+			$('#homepage').append(''+data.response.body.items.item.homepage+'');
+			$('#overview').append('<p align="justify">'+data.response.body.items.item.overview+'</p>');
+			
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = { 
+		        center: new kakao.maps.LatLng(data.response.body.items.item.mapy, data.response.body.items.item.mapx), // 지도의 중심좌표
+		        level: 4 // 지도의 기본 확대 레벨 
+		        		 //*(Json에서 가져오는 값이 6으로 고정값이기 때문에 '4'로 입력 
+		        		 //1~14까지 입력가능 or 'data.response.body.items.item.mlevel' 로 입력가능 
+		    };
+		
+			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성
+			
+			var mapTypeControl = new kakao.maps.MapTypeControl();
+
+			// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의, TOPRIGHT는 오른쪽 위를 의미
+			map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+			// 줌 컨트롤
+			var zoomControl = new kakao.maps.ZoomControl();
+			map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+			
+			var markerPosition  = new kakao.maps.LatLng(data.response.body.items.item.mapy, data.response.body.items.item.mapx); 
+
+            // 마커 생성
+            var marker = new kakao.maps.Marker({
+                position: markerPosition
+            });
+
+            // 마커 지도 위에 표시
+            marker.setMap(map);
+            
+         	// 커스텀 오버레이를 생성하고 지도에 표시
+    		var customOverlay = new kakao.maps.CustomOverlay({
+    			map: map,
+    			clickable : true, // 커스텀 오버레이 클릭 시 지도에 이벤트를 전파하지 않도록 설정
+    			content: '<div><a id="mapOverray" href="https://map.kakao.com/link/to/'+
+        		data.response.body.items.item.title+','+
+        		data.response.body.items.item.mapy+','+
+        		data.response.body.items.item.mapx+
+        		'">카카오맵 길찾기</a></div>', 
+    			position: new kakao.maps.LatLng(data.response.body.items.item.mapy, data.response.body.items.item.mapx), // 커스텀 오버레이를 표시할 좌표
+    			xAnchor: 0.5, // 컨텐츠의 x 위치
+    			yAnchor: -1 // 컨텐츠의 y 위치
+    		});
+            
+            $('#map').append(
+            		'<a href="https://map.kakao.com/link/to/'+
+            		data.response.body.items.item.title+','+
+            		data.response.body.items.item.mapy+','+
+            		data.response.body.items.item.mapx+
+            		'">카카오 지도 길찾기 바로가기</a>');
+			
 		});
-		
-		
+	});
+	
+	$(function(){
+		$.getJSON('http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?'+
+				'ServiceKey=<%=Keys.SERVICE_KEY%>'+
+				'&contentId='+${param.contentId}+
+				'&contentTypeId=12'+
+				'&MobileOS=ETC&MobileApp=AppTest&_type=json', function(data){
+			
+			$('#chkpet').append(''+data.response.body.items.item.chkpet+'');
+			$('#parking').append(''+data.response.body.items.item.parking+'');
+			$('#restdate').append(''+data.response.body.items.item.restdate+'');
+			$('#usetime').append(''+data.response.body.items.item.usetime+'');
+			$('#infocenter').append('<span class="user-select-all">'+data.response.body.items.item.infocenter+'</span>');
+			
+		});
+	});
+
 	</script>
-
-</head>
-<body>
-
-	<header>
-		<div id="memberMenu">
+  </head>
+  <body class="d-flex flex-column h-100">
+    
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand title" href="/biz">
+      	<span id="titleFont1">서울</span> 
+		<span id="titleFont2">콕</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/biz">홈</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="getTourList.do">서울관광지</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="getReviewList.do">관광지리뷰</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="getNoticeList.do">공지사항</a>
+          </li>
+        </ul>
+        <div class="d-flex">
 			<%if(session.getAttribute("loginId") == null){ %>
 			&nbsp;<a class="memberMenu"  href="loginForm.me">로그인</a>&nbsp;
 			<%} else{%>
@@ -282,43 +188,82 @@
 			&nbsp;<a class="memberMenu" href="adminPage.me">관리자페이지</a>&nbsp;
 			<%}	
 			} %>
-		</div>
-		<span id="logo">
-			<a href="/biz">
-				<span id="logoFont1">서울</span> 
-				<span id="logoFont2">콕</span>
-			</a>
-		</span>
-		<span id="mainMenu">
-			<a class="mainMenu" href="getTourList.do">서울관광지</a>&nbsp;
-			&nbsp;<a class="mainMenu"  href="getReviewList.do">관광지리뷰</a>&nbsp;
-			&nbsp;<a class="mainMenu"  href="getNoticeList.do">공지사항</a>
-		</span>
-	</header>
-<div id="titleSpace"></div>
-<div align="center">
-	<!-- 관광지 정보 영역 -->
-	
-		<hr>
-			<div id="pageTitle">
-		
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+  <div class="container">
+	<!--
+	테스트용 이미지 
+	<img src="http://tong.visitkorea.or.kr//cms2//website//20//2504320.jpg">
+	<img src="http://tong.visitkorea.or.kr/cms2/website/31/1415931.jpg">
+	<img src="http://tong.visitkorea.or.kr/cms2/website/73/2029273.jpg"> 
+	-->
+	<br><br><br><br>
+  </div>
+  <div class="container-fluid">
+  	<div class="row justify-content-center">
+  		<div class="col-1 d-none d-sm-block">
+  		</div>
+  		<div class="col-1 d-none d-md-block">
+  		</div>
+  		<div class="col-1 d-none d-lg-block">
+  		</div>
+	    <div id="tourInfo" class="col row row-cols-1 justify-content-md-center">
+			<div id="img" class="col">
 			</div>
-		<hr>
-		
-		<table id="tourInfo"></table>
-		
-		
-
-	
-		<table id="tourDetailInfo"></table>
-
-		<hr>
-		
-</div>
-
-
-	<div>
-		<a id="toTop" href="#">▲</a>
+			<div id="title" class="col py-3">
+			</div>
+			<div id="address" class="col py-3">
+				<b>주소</b><hr class="my-1">
+			</div>
+			<div id="homepage" class="col py-3">
+				<b>홈페이지</b><hr class="my-1">
+			</div>
+			<div id="overview" class="col py-3">
+				<b>개요</b><hr class="my-1">
+			</div>
+			<div id="map" class="col py-3" style="width:100%; height:300px;">
+			</div>
+			<div id="chkpet"  class="col py-3">
+				<b>반려동물 동반 가능 여부</b><hr class="my-1">
+			</div>
+			<div id="parking" class="col py-3">
+				<b>주차</b><hr class="my-1">
+			</div>
+			<div id="restdate" class="col py-3">
+				<b>휴무일</b><hr class="my-1">
+			</div>
+			<div id="usetime" class="col py-3">
+				<b>이용시간</b><hr class="my-1">
+			</div>
+			<div id="infocenter" class="col py-3">
+				<b>문의</b><hr class="my-1">
+			</div>
+	    </div>
+	    <div class="col-1 d-none d-lg-block">
+  		</div>
+  		<div class="col-1 d-none d-md-block">
+  		</div>
+  		<div class="col-1 d-none d-sm-block">
+  		</div>
 	</div>
-</body>
+  </div>
+  
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container-fluid text-center">
+    <span class="text-muted">ⓒSeoulkok. All rights reserved.</span>
+  </div>
+</footer>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      
+  </body>
 </html>
