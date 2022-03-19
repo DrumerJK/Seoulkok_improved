@@ -276,7 +276,7 @@
 			<%if(session.getAttribute("loginId") == null){ %>
 			&nbsp;<a class="memberMenu"  href="loginForm.me">로그인</a>&nbsp;
 			<%} else{%>
-			&nbsp;<a class="memberMenu" href="logout.me">로그아웃</a>&nbsp;
+			&nbsp;<a class="memberMenu" href="logout.me" data-bs-toggle="modal" data-bs-target="#exampleModal">로그아웃</a>&nbsp;
 			<%} %>
 			<%if(session.getAttribute("loginId") != null){ %>
 			<%	if(!session.getAttribute("loginId").equals("admin")) {%>
@@ -296,6 +296,25 @@
 
 <!-- Begin page content -->
 <main class="flex-shrink-0">
+<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">로그아웃</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        서울콕에서 로그아웃합니다. 계속하시겠습니까?
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+	        <a role="button" class="btn btn-primary" href="logout.me">로그아웃</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
   <div class="container">
 	<!--
 	테스트용 이미지 

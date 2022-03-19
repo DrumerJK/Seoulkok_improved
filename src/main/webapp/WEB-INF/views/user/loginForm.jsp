@@ -1,160 +1,90 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>서울 콕: 당신의 서울을 즐겁게</title>
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>서울 콕: 당신의 서울을 즐겁게</title>
 
-<style type="text/css">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/">
 
-	/* 헤더 영역 CSS */
-	@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
-	
-	header{
-		width: 100%;
-		height: 85px;
-		position: fixed;
-		top: 0;
-		left: 0;
-		background-color: white;
-		border-bottom: 1px solid rgb(230, 230, 230); 
-	}
-	
-	a{
-		text-decoration: none;
-	}
-	
-	#memberMenu{
-		width: 100%;
-		text-align: right;
-		background: rgb(230, 230, 230); 
-		font-size: small;
-	}
-	
-	.memberMenu{
-		color: rgb(100, 100, 100);		
-	}
-	
-	.memberMenu:hover{
-		text-decoration: underline;
-	}
-	
-	#logo{
-		font-family: 'Hanna', sans-serif;
-		font-size: 3.5em;
-		margin: 20px;
-	}
-	
-	#logoFont1{
-		color: rgb(100, 100, 100);
-	}
-	
-	#logoFont2{
-		color: rgb(0, 121, 188);
-	}
-	
-	#mainMenu{
-		float: right;
-		margin-top: 22px;
-		padding-right: 20px;
-		font-family: 'Hanna', sans-serif;
-		font-size: 2em;
-	}
-	
-	.mainMenu{
-		color: rgb(100, 100, 100);
-		transition-duration: 0.3s;
-	}
-	
-	.mainMenu:hover{
-		color: rgb(0, 121, 188);
-		font-size: 1.2em;
-		transition-duration: 0.3s;
-	}
-	
-	/* 헤더영역 CSS 끝 */
+    
 
-	#titleSpace{
-		height:85px;
-	}
-	
-	#pageTitle{
-		height: 200px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-size: large;
-		font-family: 'BMDOHYEON', sans-serif;		
-	}
-	
-	/* 섹션영역 CSS 시작 */
-	
-	#wrapper{
-		margin: 10% auto;
+    <!-- Bootstrap core CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      
+      
+      
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="CSS/loginForm.css" rel="stylesheet">
+    <link href="CSS/header_footer.css" rel="stylesheet">
+    
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
 		
-	}
-	
-	td{
-		padding: 10px;
-	}
-	
-	.category{
-		width: 100px;
-		height: 30px;
-		background: rgb(0, 121, 188);
-		text-align: center;
-		color: white;
-		border-radius: 10px;
-		font-size: large;
-	}
-	
-	#inputId, #inputPw{
-		width: 250px;
-		height: 30px;
-		border: solid 2px rgb(0, 121, 188);		
-		border-radius: 10px;
-		font-size: large;
-	}
-	
-	
-	#loginButton{
-		height: 100px;
-		padding: 20px;
-		background: rgb(0, 121, 188);
-		text-align: center;
-		color: white;
-		border: white;
-		border-radius: 10px;
-		font-size: large;
-	}
-	
-	#loginButton:hover{
-		cursor: pointer;
-	}
-	
-	#buttons{
-		text-align: right;
-	}
-	
-	#buttons a{
-		color: rgb(100, 100, 100);
-	}
-	
-	#buttons a:hover{
-		text-decoration: underline;
-		
-	}
-	
-	/* 섹션영역 CSS 끝 */
-
-</style>
-
-</head>
-<body>
-
-	<header>
-		<div id="memberMenu">
+	</script>
+  </head>
+  <body class="d-flex flex-column h-100">
+    
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand title" href="/biz">
+      	<span id="titleFont1">서울</span> 
+		<span id="titleFont2">콕</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/biz">홈</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="getTourList.do">서울관광지</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="getReviewList.do">관광지리뷰</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="getNoticeList.do">공지사항</a>
+          </li>
+        </ul>
+        <div class="d-flex">
 			<%if(session.getAttribute("loginId") == null){ %>
 			&nbsp;<a class="memberMenu"  href="loginForm.me">로그인</a>&nbsp;
 			<%} else{%>
@@ -170,48 +100,44 @@
 			&nbsp;<a class="memberMenu" href="adminPage.me">관리자페이지</a>&nbsp;
 			<%}	
 			} %>
-		</div>
-		<span id="logo">
-			<a href="/biz">
-				<span id="logoFont1">서울</span> 
-				<span id="logoFont2">콕</span>
-			</a>
-		</span>
-		<span id="mainMenu">
-			<a class="mainMenu" href="getTourList.do">서울관광지</a>&nbsp;
-			&nbsp;<a class="mainMenu"  href="getReviewList.do">관광지리뷰</a>&nbsp;
-			&nbsp;<a class="mainMenu"  href="getNoticeList.do">공지사항</a>
-		</span>
-	</header>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
 
-	<div id="titleSpace"></div>
-	<hr>
-		<div id="pageTitle">
-			<h1 align="center">로그인</h1>
-		</div>
-	<hr>
+<!-- Begin page content -->
+<div class="container text-center">
 
-	<div id="wrapper" align="center">
-		<form action="loginForm.me"  method="post">
-			<table>
-				<tr>
-					<td><div class="category">아이디</div></td>
-					<td><input type="text" name="id" id="inputId"></td>
-					<td rowspan="2"><input type="submit" value="로그인" id="loginButton"></td>
-				</tr>
-				<tr>
-					<td><div class="category">비밀번호</div></td>
-					<td><input type="password" name="password" id="inputPw"></td>
-				</tr>
-				<tr>
-					<td colspan="3" id="buttons">
-						<a href="#">비밀번호 찾기</a>&nbsp;/&nbsp;
-						<a href="#">아이디 찾기</a>&nbsp;/&nbsp;
-						<a href="membershipForm.me">회원가입</a>
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
-</body>
+	<main class="form-signin">
+	  <div class="container">
+		<br><br><br><br>
+	  </div>
+	  <form action="loginForm.me"  method="post">
+	    <h1 class="h3 mb-3 fw-normal">로그인</h1>
+	
+	    <div class="form-floating">
+	      <input type="text" class="form-control" id="floatingInput" name="id" placeholder="name">
+	      <label for="floatingInput">ID</label>
+	    </div>
+	    <div class="form-floating">
+	      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+	      <label for="floatingPassword">Password</label>
+	    </div>
+	
+	    <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+	    <%if (request.getParameter("loginFail") != null) {%>
+			<div class="alert alert-danger my-2" role="alert">
+			  아이디 또는 비밀번호를 확인하세요.
+			</div>
+		<%} %>
+	    <p class="mt-5 mb-3 text-muted">&copy;Seoulkok. All rights reserved.</p>
+	  </form>
+	</main>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+  </body>
 </html>

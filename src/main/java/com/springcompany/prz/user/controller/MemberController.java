@@ -21,6 +21,14 @@ public class MemberController {
 
 	@Autowired // 서비스 객체 주입
 	UserService userService;
+	
+	// 홈 화면 호출
+	@RequestMapping("home.me")
+	public String home() {
+		System.out.println("홈 화면 호출");
+		
+		return "../../index";
+	}
 
 	// USER파트 처리 Controller 시작
 
@@ -48,9 +56,10 @@ public class MemberController {
 	// 로그아웃
 	@RequestMapping("/logout.me")
 	public String logout(userVO vo, HttpSession session) {
-		session.invalidate();
 		System.out.println("로그아웃 기능 호출");
-		return "user/loginForm";
+
+		session.invalidate();
+		return "redirect:home.me";
 
 	}
 

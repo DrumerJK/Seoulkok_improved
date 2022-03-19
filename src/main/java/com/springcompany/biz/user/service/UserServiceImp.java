@@ -35,17 +35,15 @@ public class UserServiceImp implements UserService {
 
 			if (user.getPassword().equals(vo.getPassword())) {
 				// 로그인 성공
-				session.setAttribute("loginId", user.getId());
-				if (user.getId().equals("admin")) {
-					return "admin/adminPage";
-				}
-				return "user/myPage";
+				session.setAttribute("loginId", user.getId()); // 세션에 loginId 정보 생성
+				
+				return "redirect:home.me";
 			} else {
-				return "user/loginForm";
+				// 로그인 실패
+				return "redirect:loginForm.me?loginFail=1";
 			}
 		}
-
-		return "user/loginForm";
+		return "redirect:loginForm.me?loginFail=1";
 	}
 
 	// 회원가입 (사용자 생성)
