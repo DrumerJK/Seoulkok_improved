@@ -18,20 +18,20 @@ public class UserDAO {
 	@Autowired
 	SqlSessionTemplate mybatis;
 
-	public userVO loginUser(userVO vo) {
+	public UserVO loginUser(UserVO vo) {
 		System.out.println("loginUser() 호출.");
 		// select * from users where id =
 		return mybatis.selectOne("loginDao.checkId", vo);
 	}
 
 	// 회원가입 (사용자 생성)
-	public void insertUser(userVO vo) {
+	public void insertUser(UserVO vo) {
 		System.out.println("회원가입 DAO 호출");
 		mybatis.insert("loginDao.insertUsers", vo);
 	}
 
 	// 아이디 중복체크
-	public userVO checkId(String id) {
+	public UserVO checkId(String id) {
 		System.out.println("아이디 중복체크 DAO 호출");
 		return mybatis.selectOne("loginDao.checkId", id);
 	}
@@ -39,7 +39,7 @@ public class UserDAO {
 	// 마이페이지 관련
 
 	// 회원정보수정
-	public void updateUser(userVO vo) {
+	public void updateUser(UserVO vo) {
 		System.out.println("회원정보 수정 DAO 호출");
 		mybatis.update("loginDao.updateUsers", vo);
 	}

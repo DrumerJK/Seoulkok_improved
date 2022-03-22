@@ -1,6 +1,6 @@
 package com.springcompany.biz.user.dao;
 
-public class userVO {
+public class UserVO {
 	private String id;
 	private String password;
 	private String checkPassword;

@@ -12,7 +12,7 @@
 	<!-- Alias 설정 -->
  	<typeAliases>
 		<typeAlias alias="notice" type="com.springcompany.biz.admin.dao.NoticeVO"/>
-		<typeAlias alias="user" type="com.springcompany.biz.user.dao.userVO"/>
+		<typeAlias alias="user" type="com.springcompany.biz.user.dao.UserVO"/>
 		<typeAlias alias="qnaboard" type="com.springcompany.biz.admin.dao.QnaVO"/>
 		<typeAlias alias="review" type="com.springcompany.biz.review.dao.ReviewVO"/>
 	</typeAliases>

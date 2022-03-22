@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.springcompany.biz.admin.dao.AdminDAO;
 import com.springcompany.biz.admin.dao.NoticeVO;
 import com.springcompany.biz.admin.dao.QnaVO;
-import com.springcompany.biz.user.dao.userVO;
+import com.springcompany.biz.user.dao.UserVO;
 
 @Service // 서비스 객체 생성
 public class AdminServiceImp implements AdminService {
@@ -19,14 +19,14 @@ public class AdminServiceImp implements AdminService {
 	// 회원관리기능 CRUD(생성, 리딩, 수정, 삭제) - 회원의 생성과 수정은 user파트에서 관리하므로 생략.
 
 	// 회원리스트
-	public List<userVO> manageMember() {
+	public List<UserVO> manageMember() {
 		System.out.println("회원관리 서비스 호출");
 
 		return adminDAO.manageMember();
 	}
 
 	// 회원상세보기
-	public userVO getMemberDetail(String id) {
+	public UserVO getMemberDetail(String id) {
 		System.out.println("회원 상세보기 서비스 호출");
 
 		return adminDAO.getMemberDetail(id);

@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.springcompany.biz.user.dao.userVO;
+import com.springcompany.biz.user.dao.UserVO;
 
 @Repository
 public class AdminDAO {
@@ -17,13 +17,13 @@ public class AdminDAO {
 	// 회원관리기능 CRUD(생성, 리딩, 수정, 삭제) - 회원의 생성과 수정은 user파트에서 관리하므로 생략.
 
 	// 회원리스트
-	public List<userVO> manageMember() {
+	public List<UserVO> manageMember() {
 		System.out.println("회원관리 DAO 호출");
 		return myBatis.selectList("loginDao.userList");
 	}
 
 	// 회원상세보기
-	public userVO getMemberDetail(String id) {
+	public UserVO getMemberDetail(String id) {
 		System.out.println("회원 상세보기 DAO 호출");
 		return myBatis.selectOne("loginDao.checkId", id);
 

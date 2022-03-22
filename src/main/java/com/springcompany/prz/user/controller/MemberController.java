@@ -1,8 +1,10 @@
 package com.springcompany.prz.user.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springcompany.biz.admin.dao.QnaVO;
 import com.springcompany.biz.review.dao.ReviewVO;
-import com.springcompany.biz.user.dao.userVO;
+import com.springcompany.biz.user.dao.UserVO;
 import com.springcompany.biz.user.service.UserService;
 
 @Controller
@@ -43,19 +46,30 @@ public class MemberController {
 
 	// 로그인 처리
 	@RequestMapping(value = "/loginForm.me", method = RequestMethod.POST)
-	public String loginProcess(userVO vo, HttpSession session) { // 세션객체 매개변수로 추가
+	public void loginProcess(@RequestParam("id") String id, @RequestParam("password") String pw, 
+							 HttpSession session, HttpServletResponse response) throws IOException { // 세션객체 매개변수로 추가
 		System.out.println("로그인 처리");
+		
+		UserVO vo = new UserVO();
+		vo.setId(id);
+		vo.setPassword(pw);
+		
 		System.out.println(vo.getId());
 		System.out.println(vo.getPassword());
 
-		String result = userService.loginProcessService(vo, session); // 세션객체도 서비스에 같이 전달
+		boolean isLoginSuccess = userService.isLoginSuccess(vo, session); // 세션객체도 서비스에 같이 전달
 
-		return result;
+		if (isLoginSuccess == true) {
+			response.getWriter().print(true);
+		} else {
+			response.getWriter().print(false);
+		}
 	}
+	
 
 	// 로그아웃
 	@RequestMapping("/logout.me")
-	public String logout(userVO vo, HttpSession session) {
+	public String logout(UserVO vo, HttpSession session) {
 		System.out.println("로그아웃 기능 호출");
 
 		session.invalidate();
@@ -65,7 +79,7 @@ public class MemberController {
 
 	// 회원가입 화면
 	@RequestMapping(value = "/membershipForm.me", method = RequestMethod.GET)
-	public String membershipform(userVO vo) {
+	public String membershipform(UserVO vo) {
 
 		System.out.println("회원가입 화면 호출");
 
@@ -74,7 +88,7 @@ public class MemberController {
 
 	// 회원가입
 	@RequestMapping(value = "/membershipForm.me", method = RequestMethod.POST)
-	public String insertUser(userVO vo, HttpServletRequest request) {
+	public String insertUser(UserVO vo, HttpServletRequest request) {
 
 		if (userService.checkIdService(request.getParameter("id"))
 				&& request.getParameter("password").equals(request.getParameter("checkPassword"))) {
@@ -88,7 +102,7 @@ public class MemberController {
 
 	// 마이페이지 호출
 	@RequestMapping("/myPage.me")
-	public String myPage(userVO vo, HttpSession session) {
+	public String myPage(UserVO vo, HttpSession session) {
 
 		System.out.println("마이페이지 화면 호출");
 
@@ -113,7 +127,7 @@ public class MemberController {
 
 	// 회원정보수정 처리
 	@RequestMapping(value = "/updateUserForm.me", method = RequestMethod.POST)
-	public String updateUser(userVO vo) {
+	public String updateUser(UserVO vo) {
 
 		System.out.println("회원정보수정 처리");
 

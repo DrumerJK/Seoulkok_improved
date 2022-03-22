@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springcompany.biz.admin.dao.NoticeVO;
 import com.springcompany.biz.admin.dao.QnaVO;
 import com.springcompany.biz.admin.service.AdminService;
-import com.springcompany.biz.user.dao.userVO;
+import com.springcompany.biz.user.dao.UserVO;
 
 @Controller
 public class AdminController {
@@ -30,7 +30,7 @@ public class AdminController {
 
 		System.out.println("회원관리 페이지 호출");
 
-		List<userVO> list = adminService.manageMember();
+		List<UserVO> list = adminService.manageMember();
 		model.addAttribute("userList", list);
 
 		return "admin/manageMember";
@@ -44,7 +44,7 @@ public class AdminController {
 
 		String id = request.getParameter("id");
 
-		userVO user = adminService.getMemberDetail(id);
+		UserVO user = adminService.getMemberDetail(id);
 
 		model.addAttribute("userDetail", user);
 

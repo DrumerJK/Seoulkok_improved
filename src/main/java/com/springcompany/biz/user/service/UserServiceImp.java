@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.springcompany.biz.admin.dao.QnaVO;
 import com.springcompany.biz.review.dao.ReviewVO;
 import com.springcompany.biz.user.dao.UserDAO;
-import com.springcompany.biz.user.dao.userVO;
+import com.springcompany.biz.user.dao.UserVO;
 
 @Service // 서비스 객체 생성
 public class UserServiceImp implements UserService {
@@ -22,8 +22,8 @@ public class UserServiceImp implements UserService {
 
 	// 로그인 관련
 	@Override
-	public String loginProcessService(userVO vo, HttpSession session) {
-		userVO user = null;
+	public boolean isLoginSuccess(UserVO vo, HttpSession session) {
+		UserVO user = null;
 
 		user = userDAO.loginUser(vo);
 
@@ -37,17 +37,15 @@ public class UserServiceImp implements UserService {
 				// 로그인 성공
 				session.setAttribute("loginId", user.getId()); // 세션에 loginId 정보 생성
 				
-				return "redirect:home.me";
-			} else {
-				// 로그인 실패
-				return "redirect:loginForm.me?loginFail=1";
+				return true;
 			}
 		}
-		return "redirect:loginForm.me?loginFail=1";
+		// 로그인 실패
+		return false;
 	}
 
 	// 회원가입 (사용자 생성)
-	public void insertUserService(userVO vo) {
+	public void insertUserService(UserVO vo) {
 		System.out.println("회원가입 서비스 호출");
 		// id, password, name, email, birtDate
 		userDAO.insertUser(vo);
@@ -74,7 +72,7 @@ public class UserServiceImp implements UserService {
 	// 마이페이지 관련
 
 	// 회원정보수정
-	public void updateUserService(userVO vo) {
+	public void updateUserService(UserVO vo) {
 		System.out.println("회원정보 수정 서비스 호출");
 		userDAO.updateUser(vo);
 	}

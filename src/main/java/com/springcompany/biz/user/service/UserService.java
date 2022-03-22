@@ -6,23 +6,23 @@ import javax.servlet.http.HttpSession;
 
 import com.springcompany.biz.admin.dao.QnaVO;
 import com.springcompany.biz.review.dao.ReviewVO;
-import com.springcompany.biz.user.dao.userVO;
+import com.springcompany.biz.user.dao.UserVO;
 
 public interface UserService {
 
 	// 로그인 관련 시작
 
 	// 로그인 동작
-	public String loginProcessService(userVO vo, HttpSession session);
+	public boolean isLoginSuccess(UserVO vo, HttpSession session);
 
 	// 회원가입 (사용자 생성)
-	public void insertUserService(userVO vo);
+	public void insertUserService(UserVO vo);
 
 	// 아이디 중복체크
 	boolean checkIdService(String id);
 
 	// 회원정보수정
-	public void updateUserService(userVO vo);
+	public void updateUserService(UserVO vo);
 
 	// 회원탈퇴
 	public void deleteUserService(String id);
