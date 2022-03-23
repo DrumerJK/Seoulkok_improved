@@ -46,15 +46,15 @@ public class MemberController {
 
 	// 로그인 처리
 	@RequestMapping(value = "/loginForm.me", method = RequestMethod.POST)
-	public void loginProcess(@RequestParam("id") String id, @RequestParam("password") String pw, 
+	public void loginProcess(@RequestParam("email") String email, @RequestParam("password") String pw, 
 							 HttpSession session, HttpServletResponse response) throws IOException { // 세션객체 매개변수로 추가
 		System.out.println("로그인 처리");
 		
 		UserVO vo = new UserVO();
-		vo.setId(id);
+		vo.setEmail(email);
 		vo.setPassword(pw);
 		
-		System.out.println(vo.getId());
+		System.out.println(vo.getEmail());
 		System.out.println(vo.getPassword());
 
 		boolean isLoginSuccess = userService.isLoginSuccess(vo, session); // 세션객체도 서비스에 같이 전달
@@ -88,14 +88,23 @@ public class MemberController {
 
 	// 회원가입
 	@RequestMapping(value = "/membershipForm.me", method = RequestMethod.POST)
-	public String insertUser(UserVO vo, HttpServletRequest request) {
+	public void insertUser(@RequestParam("email") String email, 
+							@RequestParam("password") String pw, 
+							@RequestParam("nickname") String nickname,
+							HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		if (userService.checkIdService(request.getParameter("id"))
-				&& request.getParameter("password").equals(request.getParameter("checkPassword"))) {
+		UserVO vo = new UserVO();
+		vo.setEmail(email);
+		vo.setPassword(pw);
+		vo.setNickname(nickname);
+		
+		if (userService.checkEmailService(request.getParameter("email"))) {
+			// 이메일 사용가능
 			userService.insertUserService(vo);
-			return "user/loginForm";
+			response.getWriter().print(true);
 		} else {
-			return "user/membershipForm";
+			// 이메일 중복
+			response.getWriter().print(false);
 		}
 
 	}
@@ -106,7 +115,7 @@ public class MemberController {
 
 		System.out.println("마이페이지 화면 호출");
 
-		if (session.getAttribute("loginId") != null) {
+		if (session.getAttribute("loginEmail") != null) {
 			System.out.println("마이페이지 이동");
 			return "user/myPage";
 		} else {
@@ -152,7 +161,7 @@ public class MemberController {
 		System.out.println("회원탈퇴 처리 호출"); // 아이디가 같이 전달되어 옴.
 
 		session.invalidate(); // 회원탈퇴이므로 세션에서도 id정보 지움
-		userService.deleteUserService(request.getParameter("id")); // 그 파라미터를 받기 위해 매개변수로
+		userService.deleteUserService(request.getParameter("email")); // 그 파라미터를 받기 위해 매개변수로
 																	// request를 받아서 서비스로 전달
 		return "redirect:loginForm.me";
 	}
@@ -167,9 +176,9 @@ public class MemberController {
 
 		System.out.println("회원 문의 리스트 화면 호출");
 
-		String loginId = session.getAttribute("loginId").toString();
+		String loginEmail = session.getAttribute("loginEmail").toString();
 
-		List<QnaVO> list = userService.getUserQnaList(loginId);
+		List<QnaVO> list = userService.getUserQnaList(loginEmail);
 
 		model.addAttribute("qnaList", list);
 
@@ -255,9 +264,9 @@ public class MemberController {
 
 		System.out.println("내가 쓴 리뷰 화면 호출");
 
-		String loginId = session.getAttribute("loginId").toString();
+		String loginEmail = session.getAttribute("loginEmail").toString();
 
-		List<ReviewVO> list = userService.getUserReview(loginId);
+		List<ReviewVO> list = userService.getUserReview(loginEmail);
 
 		model.addAttribute("reviewList", list);
 

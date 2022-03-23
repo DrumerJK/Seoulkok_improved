@@ -20,8 +20,8 @@ public class UserDAO {
 
 	public UserVO loginUser(UserVO vo) {
 		System.out.println("loginUser() 호출.");
-		// select * from users where id =
-		return mybatis.selectOne("loginDao.checkId", vo);
+		// select * from users where email =
+		return mybatis.selectOne("loginDao.checkEmail", vo);
 	}
 
 	// 회원가입 (사용자 생성)
@@ -31,9 +31,9 @@ public class UserDAO {
 	}
 
 	// 아이디 중복체크
-	public UserVO checkId(String id) {
+	public UserVO checkEmail(String email) {
 		System.out.println("아이디 중복체크 DAO 호출");
-		return mybatis.selectOne("loginDao.checkId", id);
+		return mybatis.selectOne("loginDao.checkEmail", email);
 	}
 
 	// 마이페이지 관련
@@ -45,9 +45,9 @@ public class UserDAO {
 	}
 
 	// 회원탈퇴
-	public void deleteUser(String id) { // 매개변수로 전달받은 id값이 sql명령문에서 처리되면 탈퇴는 정상작동
+	public void deleteUser(String email) { // 매개변수로 전달받은 id값이 sql명령문에서 처리되면 탈퇴는 정상작동
 		System.out.println("회원 탈퇴 DAO 호출");
-		mybatis.delete("loginDao.deleteUsers", id);
+		mybatis.delete("loginDao.deleteUsers", email);
 	}
 
 	// USER파트 처리 DAO 끝
@@ -61,9 +61,9 @@ public class UserDAO {
 	}
 
 	// 나의 문의 리스트
-	public List<QnaVO> getUserQnaList(String loginId) {
+	public List<QnaVO> getUserQnaList(String loginEmail) {
 		System.out.println("나의 문의 리스트 DAO 호출");
-		return mybatis.selectList("adminDAO.getUserQnaList", loginId);
+		return mybatis.selectList("adminDAO.getUserQnaList", loginEmail);
 	}
 
 	// 나의 문의 상세보기
@@ -93,10 +93,10 @@ public class UserDAO {
 	// 문의 관련 DAO 끝
 
 	// 내가 쓴 리뷰
-	public List<ReviewVO> getUserReview(String loginId) {
+	public List<ReviewVO> getUserReview(String loginEmail) {
 		System.out.println("내가 쓴 리뷰 DAO 호출");
 
-		return mybatis.selectList("ReviewDAO.getUserReviewList", loginId);
+		return mybatis.selectList("ReviewDAO.getUserReviewList", loginEmail);
 	}
 
 }

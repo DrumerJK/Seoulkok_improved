@@ -3,9 +3,9 @@
 
 <mapper namespace="loginDao">
 
-	<select id="checkId" resultType="user">
+	<select id="checkEmail" resultType="user">
 	<![CDATA[
-       select * from users where id=#{id}
+       select * from users where email=#{email}
 	]]>
 	</select>
 	
@@ -18,19 +18,19 @@
    	<insert id="insertUsers" >
 	<![CDATA[
        insert into users
-       values(#{id}, #{password}, #{name}, #{email}, #{birthDate})
+       values(#{email}, #{password}, #{nickname})
 	]]>
 	</insert>
 	
 	<update id="updateUsers">
 	<![CDATA[
-		update users set name=#{name}, password=#{newPassword}, email=#{email} where id=#{id}
+		update users set password=#{newPassword}, nickname=#{nickname} where email=#{email}
 	]]>		
 	</update>
 	
 	<delete id="deleteUsers">
 	<![CDATA[
-		delete from users where id=#{id}
+		delete from users where email=#{email}
 	]]>
 	</delete>
 	

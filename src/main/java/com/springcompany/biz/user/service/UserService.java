@@ -19,20 +19,20 @@ public interface UserService {
 	public void insertUserService(UserVO vo);
 
 	// 아이디 중복체크
-	boolean checkIdService(String id);
+	boolean checkEmailService(String email);
 
 	// 회원정보수정
 	public void updateUserService(UserVO vo);
 
 	// 회원탈퇴
-	public void deleteUserService(String id);
+	public void deleteUserService(String email);
 
 	// 로그인 관련 끝
 
 	// 문의관련 시작
 
 	// 나의 문의 리스트
-	List<QnaVO> getUserQnaList(String loginId);
+	List<QnaVO> getUserQnaList(String loginEmail);
 
 	// 나의 문의 상세보기
 	QnaVO getQnaDetail(int seq);
@@ -54,7 +54,7 @@ public interface UserService {
 	// 리뷰관련 시작
 
 	// 내가 쓴 리뷰
-	List<ReviewVO> getUserReview(String loginId);
+	List<ReviewVO> getUserReview(String loginEmail);
 
 	// 리뷰관련 끝
 }

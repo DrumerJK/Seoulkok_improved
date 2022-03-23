@@ -3,48 +3,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>서울 콕: 당신의 서울을 즐겁게</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sticky-footer-navbar/">
-
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
-<link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
-<meta name="theme-color" content="#7952b3">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      
-      
-      
-    </style>
+    <%@ include file="../../../head_info.jsp" %>
 
     
     <!-- Custom styles for this template -->
@@ -58,53 +17,8 @@
   </head>
   <body class="d-flex flex-column h-100">
     
-<header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand title" href="/biz">
-      	<span id="titleFont1">서울</span> 
-		<span id="titleFont2">콕</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/biz">홈</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="getTourList.do">서울관광지</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="getReviewList.do">관광지리뷰</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="getNoticeList.do">공지사항</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-			<%if(session.getAttribute("loginId") == null){ %>
-			&nbsp;<a class="memberMenu"  href="loginForm.me">로그인</a>&nbsp;
-			<%} else{%>
-			&nbsp;<a class="memberMenu" href="logout.me">로그아웃</a>&nbsp;
-			<%} %>
-			<%if(session.getAttribute("loginId") != null){ %>
-			<%	if(!session.getAttribute("loginId").equals("admin")) {%>
-			&nbsp;<a class="memberMenu" href="myPage.me">마이페이지</a>&nbsp;
-			<%} 
-			}%>
-			<%if(session.getAttribute("loginId") != null){ %>
-			<%	if(session.getAttribute("loginId").equals("admin")) {%>
-			&nbsp;<a class="memberMenu" href="adminPage.me">관리자페이지</a>&nbsp;
-			<%}	
-			} %>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+    <%@ include file="../../../header.jsp" %>
+
 
 <!-- Begin page content -->
 	<main>
@@ -115,27 +29,181 @@
 		  <form class="row" action="membershipForm.me" method="post">
 		  	  <h1 class="h3 mb-3 fw-normal">회원가입</h1>
 		  	  <div class="form-floating mb-3">
-  		   	    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+  		   	    <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com">
 			    <label for="floatingInput">E-mail</label>
 			  </div>
 			  <div class="form-floating col-md-6 mb-3">
-			    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+			    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
 			    <label for="floatingPassword">비밀번호</label>
 			  </div>
 			  <div class="form-floating col-md-6 mb-3">
-			    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+			    <input type="password" class="form-control" id="floatingCheckPassword" name="checkPassword" placeholder="Password">
 			    <label for="floatingPassword">비밀번호 확인</label>
 			  </div>
+			  <div class="mb-3 text-muted">
+			  	※비밀번호는 4 ~ 12자의 영문 대소문자와 숫자 조합이어야 합니다.
+			  </div>
+			  <div class="form-floating mb-3">
+  		   	    <input type="text" class="form-control" id="floatingNickname" name="nickname" placeholder="name">
+			    <label for="floatingInput">닉네임</label>
+			  </div>
+			  <div class="mb-3 text-muted">
+			  	※닉네임은 2 ~ 8자의 한글이어야 합니다.
+			  </div>
+			  <div class="mb-3">
+			  	<div class="form-check">
+				  <input class="form-check-input" type="checkbox" value="agree" id="agreeCheck" name="agreeCheck">
+				  <label class="form-check-label" for="flexCheckDefault">
+		        	<a href="#" data-bs-toggle="modal" data-bs-target="#agreementModal">[필수]개인정보 수집 및 이용 동의</a>
+				  </label>
+				</div>
+		      </div>
 			  
 			  <div class="col-12">
-			    <button type="submit" class="btn btn-primary">회원가입</button>
+			    <button type="button" class="btn btn-primary" id="joinBtn">회원가입</button>
 			  </div>
 		</form>
 	  </div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="agreementModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-scrollable">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="staticBackdropLabel">개인정보 처리방침</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <%@ include file="serviceAgreement.jsp" %>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+		        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="agreeBtn">예, 동의합니다.</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div class="modal fade" id="joinSuccessModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">회원가입 성공</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        환영합니다. 회원가입에 성공하였습니다.
+		      </div>
+		      <div class="modal-footer">
+		        <a role="button" class="btn btn-primary" href="home.me">홈으로 이동</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	</main>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		var joinSuccessModal = new bootstrap.Modal(document.getElementById('joinSuccessModal'), {
+	  	    keyboard: true
+	    })
+			
+		$('#agreeBtn').click(function(){
+			$('#agreeCheck').click();
+		});
+		
+		function formCheck() {
+			var email = $('#floatingEmail').val(); 
+			var password = $('#floatingPassword').val();
+			var checkPassword = $('#floatingCheckPassword').val();
+			var nickname = $('#floatingNickname').val();
+			var agreeCheck = $('#agreeCheck').is(':checked');
+			
+			var emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; 
+			var passwordRegex = /^[A-Za-z0-9]{4,12}$/;
+			var nicknameRegex = /^[가-힣]{2,8}$/;
+			
+			if (email == '') {
+				alert('이메일을 입력해주십시오');
+				$('#floatingEmail').focus();
+				return false;
+			}
+			
+			if (password == '') {
+				alert('비밀번호를 입력해주십시오');
+				$('#floatingPassword').focus();
+				return false;
+			}
+			
+			if (checkPassword == '') {
+				alert('비밀번호를 한번 더 입력해주십시오');
+				$('#floatingCheckPassword').focus();
+				return false;
+			}
+			
+			if (nickname == '') {
+				alert('닉네임을 입력해주십시오');
+				$('#floatingNickname').focus();
+				return false;
+			}
+			
+			if (agreeCheck == false) {
+				alert('개인정보 수집 및 이용에 동의해주십시오.');
+				return false;
+			}
+			
+			if (password != checkPassword) {
+				alert('입력하신 비밀번호가 일치하지 않습니다.');
+				$('#floatingPassword').focus();
+				return false;
+			}
+			
+			if (emailRegex.test(email) == false) {
+				alert('이메일 양식에 맞지 않습니다.');
+				$('#floatingEmail').focus();
+				return false;
+			}
+			
+			if (passwordRegex.test(password) == false) {
+				alert('비밀번호는 4 ~ 12자의 영문 대소문자와 숫자 조합이어야 합니다.');
+				$('#floatingPassword').focus();
+				return false;
+			}
+			
+			if (nicknameRegex.test(nickname) == false) {
+				alert('닉네임은 2 ~ 8자의 한글이어야 합니다.');
+				$('#floatingNickname').focus();
+				return false;
+			}
+			return true;
+		}
+		
+		$(function() {
+			$('#joinBtn').click(function() {
+				var email = $('#floatingEmail').val(); 
+				var password = $('#floatingPassword').val();
+				var nickname = $('#floatingNickname').val();
+				
+				if (formCheck()) {
+					$.ajax({ 
+						type : "POST", 
+						url : 'membershipForm.me', 
+						data : {email:email, password:password, nickname:nickname}, 
+						success : function(data) { 
+							if (data == 'false') { 
+								alert('이미 가입된 이메일입니다.');
+								$('#floatingEmail').focus();
+							} else { 
+								joinSuccessModal.show();
+							} 
+						}
+					});
+				}
+			});
+		});
+	</script>
   </body>
 </html>

@@ -28,14 +28,13 @@ public class UserServiceImp implements UserService {
 		user = userDAO.loginUser(vo);
 
 		if (user != null) {
-			System.out.println(user.getId());
 			System.out.println(user.getPassword());
-			System.out.println(user.getName());
 			System.out.println(user.getEmail());
+			System.out.println(user.getNickname());
 
 			if (user.getPassword().equals(vo.getPassword())) {
 				// 로그인 성공
-				session.setAttribute("loginId", user.getId()); // 세션에 loginId 정보 생성
+				session.setAttribute("loginEmail", user.getEmail()); // 세션에 loginEmail 정보 생성
 				
 				return true;
 			}
@@ -47,22 +46,22 @@ public class UserServiceImp implements UserService {
 	// 회원가입 (사용자 생성)
 	public void insertUserService(UserVO vo) {
 		System.out.println("회원가입 서비스 호출");
-		// id, password, name, email, birtDate
+		// email, password, nickname
 		userDAO.insertUser(vo);
 	}
 
-	// 아이디 중복체크
+	// 이메일 중복체크
 
-	public boolean checkIdService(String id) {
-		System.out.println("아이디 중복체크 서비스 호출");
+	public boolean checkEmailService(String email) {
+		System.out.println("이메일 중복체크 서비스 호출");
 
 		boolean result = false;
 
-		if (userDAO.checkId(id) == null) {
-			System.out.println("아이디 사용가능");
+		if (userDAO.checkEmail(email) == null) {
+			System.out.println("이메일 사용가능");
 			result = true;
 		} else {
-			System.out.println("아이디 중복");
+			System.out.println("이메일 중복");
 			result = false;
 		}
 
@@ -78,9 +77,9 @@ public class UserServiceImp implements UserService {
 	}
 
 	// 회원탈퇴
-	public void deleteUserService(String id) { // getParameter("id")는 문자열을 반환하므로
+	public void deleteUserService(String email) { // getParameter("id")는 문자열을 반환하므로
 		System.out.println("회원탈퇴 서비스 호출");// 여기는 String으로 매개변수 선언. 똑같이 DAO에도 전달.
-		userDAO.deleteUser(id);
+		userDAO.deleteUser(email);
 	}
 
 	// USER파트 처리 ServiceImp 끝
@@ -88,10 +87,10 @@ public class UserServiceImp implements UserService {
 	// 문의 관련 처리 Service 시작
 
 	// 나의 문의 리스트
-	public List<QnaVO> getUserQnaList(String loginId) {
+	public List<QnaVO> getUserQnaList(String loginEmail) {
 		System.out.println("나의 문의 리스트 호출");
 
-		return userDAO.getUserQnaList(loginId);
+		return userDAO.getUserQnaList(loginEmail);
 	}
 
 	// 나의 문의 작성하기
@@ -132,10 +131,10 @@ public class UserServiceImp implements UserService {
 	// 문의 관련 처리 Service 끝
 
 	// 내가 쓴 리뷰
-	public List<ReviewVO> getUserReview(String loginId) {
+	public List<ReviewVO> getUserReview(String loginEmail) {
 		System.out.println("내가 쓴 리뷰 서비스 호출");
 
-		return userDAO.getUserReview(loginId);
+		return userDAO.getUserReview(loginEmail);
 	}
 
 }
