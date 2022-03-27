@@ -1,7 +1,19 @@
 # 서울콕 개선 프로젝트
+본 프로젝트는 팀으로 진행했던 프로젝트를 개인적으로 개선하는 작업을 진행 중인 프로젝트입니다.
+팀으로 진행했던 프로젝트 레포지토리를 보시려면 아래의 링크로 이동하시면 됩니다.
 서울콕 프로젝트 -> https://github.com/DrumerJK/Seoul_Tour_WebProject
 
-### 2022. 03. 14. ~ 작업 중
+### 프로젝트 목표
+  - 서울 시내 관광지 정보를 제공하고 이에 대한 리뷰를 작성 및 확인할 수 있는 서비스를 구현하고자 함.
+### 작업기간 : 2022. 03. 14. ~ 작업 중
+### 사용기술
+  - JDK 1.8
+  - Oracle Database 11g Express Edition 11.2.0.2.0
+  - Spring Framework 5.2.17.
+  - mybatis 3.5.7.
+  - Apache Tomcat v9.0
+  - jQuery
+  - Bootstrap
 ### 현재(2022. 03. 24.)까지 주요 개선점
 1. Bootstrap 적용으로 UI 대폭 개선, 반응형 웹 지원
 2. 로그인 및 회원가입 시 Ajax 적용으로 Modal 및 Alert 창 통한 UX 개선
