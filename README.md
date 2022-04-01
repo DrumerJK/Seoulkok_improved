@@ -25,19 +25,19 @@
 
 #### 홈 화면
   
-<img width="682" alt="홈" src="https://user-images.githubusercontent.com/92901381/159850607-9eef20e6-2b59-406c-8f91-541697550b8d.png">
+<img width="720" alt="홈" src="https://user-images.githubusercontent.com/92901381/159850607-9eef20e6-2b59-406c-8f91-541697550b8d.png">
 <br>
-<img width="375" alt="모바일홈" src="https://user-images.githubusercontent.com/92901381/159853806-71c206b2-5b33-47db-ab0a-86487d172587.png">
-<img width="375" alt="모바일홈_메뉴" src="https://user-images.githubusercontent.com/92901381/159853876-96b0eef7-c65e-4481-9788-e6de43b265b5.png">
+<img width="300" alt="모바일홈" src="https://user-images.githubusercontent.com/92901381/159853806-71c206b2-5b33-47db-ab0a-86487d172587.png">
+<img width="300" alt="모바일홈_메뉴" src="https://user-images.githubusercontent.com/92901381/159853876-96b0eef7-c65e-4481-9788-e6de43b265b5.png">
 
 
 #### 관광지 리스트 화면
   
-<img width="682" alt="관광지리스트" src="https://user-images.githubusercontent.com/92901381/159850707-45a23829-6a46-4152-882d-574e4f211e32.png">
+<img width="720" alt="관광지리스트" src="https://user-images.githubusercontent.com/92901381/159850707-45a23829-6a46-4152-882d-574e4f211e32.png">
   
  <br>
  
-<img width="375" alt="모바일관광지리스트" src="https://user-images.githubusercontent.com/92901381/159854225-11189762-1a0a-458e-8438-b7a77adfb022.png">
+<img width="300" alt="모바일관광지리스트" src="https://user-images.githubusercontent.com/92901381/159854225-11189762-1a0a-458e-8438-b7a77adfb022.png">
 
 #### UI
   - 관광지 이미지 썸네일과 이름이 목록 형식으로 보여지던 이전 버전과 달리, 카드 형식으로 보여지는 것이 반응형 웹 컨셉에 더욱 적합하다고 판단하였습니다. 
@@ -50,9 +50,9 @@
 https://user-images.githubusercontent.com/92901381/159850851-507ed375-3746-415f-a778-2516c3199c0f.mp4
   
 <br>
-<img width="375" alt="모바일관광지정보1" src="https://user-images.githubusercontent.com/92901381/159856162-bca9cbe6-45da-45ed-88bf-ff4c494b1542.png">
-<img width="375" alt="모바일관광지정보2" src="https://user-images.githubusercontent.com/92901381/159856169-6d25e851-c597-46de-871e-a688adc03aaa.png">
-<img width="375" alt="모바일관광지정보3" src="https://user-images.githubusercontent.com/92901381/159856174-e2cbe741-6cee-4c3b-b781-43cf470796c4.png">
+<img width="300" alt="모바일관광지정보1" src="https://user-images.githubusercontent.com/92901381/159856162-bca9cbe6-45da-45ed-88bf-ff4c494b1542.png">
+<img width="300" alt="모바일관광지정보2" src="https://user-images.githubusercontent.com/92901381/159856169-6d25e851-c597-46de-871e-a688adc03aaa.png">
+<img width="300" alt="모바일관광지정보3" src="https://user-images.githubusercontent.com/92901381/159856174-e2cbe741-6cee-4c3b-b781-43cf470796c4.png">
 
 #### UI
   - 이전 버전과 비교하여 레이아웃 상의 큰 차이는 없으나, 브라우저 창의 크기에 따라 컨텐츠의 크기가 너무 크게 보이거나 너무 작게 보이는 상황을 방지하기 위해 화면 크기에 따라 좌우 여백이 다르게 보여지도록 처리하였습니다.
@@ -61,19 +61,19 @@ https://user-images.githubusercontent.com/92901381/159850851-507ed375-3746-415f-
 
 #### 로그인 화면
   
-<img width="682" alt="로그인" src="https://user-images.githubusercontent.com/92901381/159851090-9ab0c6a5-f11d-4f5b-9d4e-f28f729fd550.png">
+<img width="720" alt="로그인" src="https://user-images.githubusercontent.com/92901381/159851090-9ab0c6a5-f11d-4f5b-9d4e-f28f729fd550.png">
 
 #### 로그인 실패 시 Modal 창 구현
   
-<img width="682" alt="로그인_모달" src="https://user-images.githubusercontent.com/92901381/159851125-14e36d2a-66ed-4fd2-999f-cb45a7a07c64.png">
+<img width="720" alt="로그인_모달" src="https://user-images.githubusercontent.com/92901381/159851125-14e36d2a-66ed-4fd2-999f-cb45a7a07c64.png">
 
 #### 로그아웃 시 Modal 창 구현
   
-<img width="683" alt="로그아웃_모달" src="https://user-images.githubusercontent.com/92901381/159851181-dd55e174-d677-458e-a33d-8adddfe8cf40.png">
+<img width="720" alt="로그아웃_모달" src="https://user-images.githubusercontent.com/92901381/159851181-dd55e174-d677-458e-a33d-8adddfe8cf40.png">
  <br>
  
-<img width="375" alt="모바일로그인" src="https://user-images.githubusercontent.com/92901381/159854127-e3072e2e-4171-4950-be51-49b133b1c472.png">
-<img width="375" alt="모바일홈_로그아웃" src="https://user-images.githubusercontent.com/92901381/159854142-0d04e803-1a95-40dc-9ade-2bb1f202d2c5.png">
+<img width="300" alt="모바일로그인" src="https://user-images.githubusercontent.com/92901381/159854127-e3072e2e-4171-4950-be51-49b133b1c472.png">
+<img width="300" alt="모바일홈_로그아웃" src="https://user-images.githubusercontent.com/92901381/159854142-0d04e803-1a95-40dc-9ade-2bb1f202d2c5.png">
 
 
 #### 회원가입 시연
@@ -82,8 +82,8 @@ https://user-images.githubusercontent.com/92901381/159851231-bb66a543-dd4c-40e7-
 
 <br>
   
-<img width="375" alt="모바일회원가입" src="https://user-images.githubusercontent.com/92901381/159856242-d6859577-4d50-4eed-8942-98fdd34f2c33.png">
-<img width="375" alt="모바일회원가입_알림창" src="https://user-images.githubusercontent.com/92901381/159856244-2a3bb7fa-3713-420d-ba71-b196753745da.png">
+<img width="300" alt="모바일회원가입" src="https://user-images.githubusercontent.com/92901381/159856242-d6859577-4d50-4eed-8942-98fdd34f2c33.png">
+<img width="300" alt="모바일회원가입_알림창" src="https://user-images.githubusercontent.com/92901381/159856244-2a3bb7fa-3713-420d-ba71-b196753745da.png">
  
 #### AJAX
   - 이전 버전에서는 로그인 및 회원가입 기능에 양식을 강제하는 기능이나 아이디의 중복 여부를 확인하고 알림창을 띄우는 기능이 없었습니다. 서버에 접근해 필요한 데이터만을 비동기적으로 불러오는 AJAX 방식으로 처리하여 가입할 이메일의 중복여부를 Alert 창으로 확인할 수 있도록 하였습니다. 로그인 화면에서 입력된 이메일이 DB에 있는지, 비밀번호는 매칭되는지 확인하고 로그인 실패 시 Modal 창을 띄워주는 동작 또한 마찬가지입니다. 나머지 이메일, 비밀번호, 닉네임의 양식에 대해서는 정규표현식을 통해 검증하도록 하고 Alert창을 띄우도록 하였습니다. 
