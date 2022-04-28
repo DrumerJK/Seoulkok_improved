@@ -59,6 +59,24 @@ https://user-images.githubusercontent.com/92901381/159850851-507ed375-3746-415f-
 #### KAKAO MAPS API
   - 이전 버전에서는 관광지의 위치 정보를 지도 위에 마커를 표시하는데 그쳤지만, KAKAO MAPS API에서 제공하는 커스텀 오버레이 기능을 이용하여 '카카오맵 길찾기'라는 버튼을 눌렀을 때 즉시 해당 관광지까지 길찾기 기능을 제공하는 카카오맵 링크로 연결되도록 처리하였습니다. 모바일 환경에서는 카카오맵 어플이 설치되어 있을 경우 어플로 이동할 수 있습니다.
 
+아래는 커스텀 오버레이를 위해 추가된 코드입니다.
+```
+         	// 커스텀 오버레이를 생성하고 지도에 표시
+    		var customOverlay = new kakao.maps.CustomOverlay({
+    			map: map,
+    			clickable : true, // 커스텀 오버레이 클릭 시 지도에 이벤트를 전파하지 않도록 설정
+    			content: '<div><a id="mapOverray" href="https://map.kakao.com/link/to/'+
+        		data.response.body.items.item.title+','+
+        		data.response.body.items.item.mapy+','+
+        		data.response.body.items.item.mapx+
+        		'">카카오맵 길찾기</a></div>', 
+    			position: new kakao.maps.LatLng(data.response.body.items.item.mapy, data.response.body.items.item.mapx), // 커스텀 오버레이를 표시할 좌표
+    			xAnchor: 0.5, // 컨텐츠의 x 위치
+    			yAnchor: -1 // 컨텐츠의 y 위치
+    		});
+  
+```
+
 #### 로그인 화면
   
 <img width="720" alt="로그인" src="https://user-images.githubusercontent.com/92901381/159851090-9ab0c6a5-f11d-4f5b-9d4e-f28f729fd550.png">
@@ -86,7 +104,80 @@ https://user-images.githubusercontent.com/92901381/159851231-bb66a543-dd4c-40e7-
 <img width="300" alt="모바일회원가입_알림창" src="https://user-images.githubusercontent.com/92901381/159856244-2a3bb7fa-3713-420d-ba71-b196753745da.png">
  
 #### AJAX
-  - 이전 버전에서는 로그인 및 회원가입 기능에 양식을 강제하는 기능이나 아이디의 중복 여부를 확인하고 알림창을 띄우는 기능이 없었습니다. 서버에 접근해 필요한 데이터만을 비동기적으로 불러오는 AJAX 방식으로 처리하여 가입할 이메일의 중복여부를 Alert 창으로 확인할 수 있도록 하였습니다. 로그인 화면에서 입력된 이메일이 DB에 있는지, 비밀번호는 매칭되는지 확인하고 로그인 실패 시 Modal 창을 띄워주는 동작 또한 마찬가지입니다. 나머지 이메일, 비밀번호, 닉네임의 양식에 대해서는 정규표현식을 통해 검증하도록 하고 Alert창을 띄우도록 하였습니다. 
+  - 이전 버전에서는 로그인 및 회원가입 기능에 양식을 강제하는 기능이나 아이디의 중복 여부를 확인하고 알림창을 띄우는 기능이 없었습니다. 서버에 접근해 필요한 데이터만을 비동기적으로 불러오는 AJAX 방식으로 처리하여 가입할 이메일의 중복여부를 Alert 창으로 확인할 수 있도록 하였습니다. 로그인 화면에서 입력된 이메일이 DB에 있는지, 비밀번호는 매칭되는지 확인하고 로그인 실패 시 Modal 창을 띄워주는 동작 또한 마찬가지입니다. 나머지 이메일, 비밀번호, 닉네임의 양식에 대해서는 정규표현식을 통해 검증하도록 하고 Alert창을 띄우도록 하였습니다.
+  
+아래는 회원가입 절차를 기존 코드에서 Ajax를 적용하고 어떻게 수정하였는지 보여주고 있습니다.
+- 기존코드 : 단순히 submit 버튼으로 양식이 제출됐을 때 ID 중복검사를 하고, ID 중복 시 회원가입 양식을 다시 로드하고 있습니다.
+  ```
+  @RequestMapping(value = "/membershipForm.me", method = RequestMethod.POST)
+	public String insertUser(userVO vo, HttpServletRequest request) {
+			
+			if(userService.checkIdService(request.getParameter("id")) 
+				&& request.getParameter("password").equals(request.getParameter("checkPassword"))) {
+				userService.insertUserService(vo);
+				return "user/loginForm";
+			} else {
+				return "user/membershipForm";
+			}
+			
+	}
+  
+  ```
+  
+- 개선된 코드 : 회원가입 양식을 체크하는 formCheck() 함수를 따로 정의하고, true가 return 될 때 ajax를 통해 POST방식으로 요청하고 응답 메시지에 따라 이메일을 다시 입력하도록 하거나 회원가입 성공을 알리는 Modal 창을 띄우도록 처리하였습니다.
+
+```
+		$(function() {
+			$('#joinBtn').click(function() {
+				var email = $('#floatingEmail').val(); 
+				var password = $('#floatingPassword').val();
+				var nickname = $('#floatingNickname').val();
+				
+				if (formCheck()) {
+					$.ajax({ 
+						type : "POST", 
+						url : 'membershipForm.me', 
+						data : {email:email, password:password, nickname:nickname}, 
+						success : function(data) { 
+							if (data == 'false') { 
+								alert('이미 가입된 이메일입니다.');
+								$('#floatingEmail').focus();
+							} else { 
+								joinSuccessModal.show();
+							} 
+						}
+					});
+				}
+			});
+		});  
+
+```
+  
+```
+	@RequestMapping(value = "/membershipForm.me", method = RequestMethod.POST)
+	public void insertUser(@RequestParam("email") String email, 
+							@RequestParam("password") String pw, 
+							@RequestParam("nickname") String nickname,
+							HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		UserVO vo = new UserVO();
+		vo.setEmail(email);
+		vo.setPassword(pw);
+		vo.setNickname(nickname);
+		
+		if (userService.checkEmailService(request.getParameter("email"))) {
+			// 이메일 사용가능
+			userService.insertUserService(vo);
+			response.getWriter().print(true);
+		} else {
+			// 이메일 중복
+			response.getWriter().print(false);
+		}
+
+	}
+  
+```  
+  
 </p>
 </details>
 
